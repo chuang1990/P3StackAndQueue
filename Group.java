@@ -14,6 +14,7 @@ public class Group
 {
     
     private Stack<Hiker> group; //creating the Stack of Hiker
+    private Hiker hikerTemp;
     private int numbHikers;
     private int maxHikers;
     
@@ -22,6 +23,7 @@ public class Group
      **/
     public Group(int maxHikers)
     {
+        hikerTemp = new Hiker();
         group = new Stack<Hiker>(); //initializing the Strack 
         this.maxHikers = maxHikers;
         
@@ -34,7 +36,10 @@ public class Group
      **/
     public void setHikers(String[] hikers)
     {
-        
+        //set the hiker value
+        hikerTemp.setHiker(hikers);
+        //add the hiker to the group
+        group.push(hikerTemp);
     }
     
     /**
@@ -68,7 +73,7 @@ public class Group
      **/
     public void addHiker(Hiker hiker)
     {
-       group.puss(hiker);
+       group.push(hiker);
     }
     
     /**
@@ -81,4 +86,4 @@ public class Group
     {
         return "";
     }
-    
+}
