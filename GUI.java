@@ -1,7 +1,9 @@
-import javax.swing.*;
-import javax.swing.JFrame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import javax.swing.JTextBox;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
 
 /**
  * GUI class
@@ -13,8 +15,8 @@ public class GUI{
     private JButton startBtn;
     private JButton checkBtn;
     private JButton openBtn;
-    private JTextBox textArea;
-    private TrailEntrance trails;
+    private JTextField textArea;
+    private final TrailEntrance trails;
     private FileEditor fileEditor;
     
     /**
@@ -38,7 +40,7 @@ public class GUI{
     /**
      * put the contents together in the container
      **/
-    setContent(JFrame frame){
+    public void setContent(JFrame frame){
     
     }
     
@@ -56,7 +58,6 @@ public class GUI{
         
         openBtn = new JButton("Open");
         openBtn.addActionListener(new ActionListener(){
-            @Override
             public void actionPerformed(ActionEvent e){
                 
             }
@@ -75,7 +76,7 @@ public class GUI{
      * create the textArea
      **/
     public void makeTextArea(){
-        textArea = new JTextBox();
+        textArea = new JTextField();
     }
     
     /**
