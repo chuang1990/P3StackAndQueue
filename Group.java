@@ -1,18 +1,28 @@
 import java.util.Stack;
 /**
  * Class Group
+ * 
+ * The Group Class is part of the implementation of "The Hiker Program"
+ * 
+ * It acts as the Stack data Structure that holds Hiker objects. 
+ * There is a maximun number of hikers that it can hold. It has methods to add hikers to the group
+ * get the number of hikers in the group and check if the group is full o not.
+ * It also has a toString methods that returns the state of the object
+ * 
  **/
-public class Group{
-
-    //instance variables
-    private Stack<String> group;
+public class Group
+{
+    
+    private Stack<Hiker> group; //creating the Stack of Hiker
     private int numbHikers;
     private int maxHikers;
     
     /**
      * constructor
      **/
-    public Group(int maxHikers){
+    public Group(int maxHikers)
+    {
+        group = new Stack<Hiker>(); //initializing the Strack 
         this.maxHikers = maxHikers;
         
     }
@@ -22,7 +32,8 @@ public class Group{
      *
      * @param hikers list of string
      **/
-    public void setHikers(String[] hikers){
+    public void setHikers(String[] hikers)
+    {
         
     }
     
@@ -31,7 +42,8 @@ public class Group{
      * 
      * @return hikers int
      */
-    public int getGroupNum(){
+    public int getGroupNum()
+    {
         return numbHikers;
     }
     
@@ -40,18 +52,23 @@ public class Group{
      * 
      * @return boolean
      **/
-    public boolean isGroupFull(){
+    public boolean isGroupFull()
+    {
         boolean full = false;
+        
         if(group.size()==maxHikers)
+        {
             full = true;
+        }
         return full; 
     }
     
     /**
      * add hiker to the group
      **/
-    public void addHiker(Hiker hiker){
-    
+    public void addHiker(Hiker hiker)
+    {
+       group.puss(hiker);
     }
     
     /**
@@ -60,7 +77,8 @@ public class Group{
      * @return String
      *//
     @Override
-    public String toString(){
+    public String toString()
+    {
         return "";
     }
     
