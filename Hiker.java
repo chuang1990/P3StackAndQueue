@@ -48,6 +48,7 @@ public class Hiker
      */
     public String toString()
     {
-        return ("hiker is: " + hikerId);
+        return ("Hiker info: " + hikerId);
     }
      
+}
