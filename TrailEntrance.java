@@ -25,6 +25,7 @@ public class TrailEntrance{
         trail2 = new LinkedList();
         trail3 = new LinkedList();
         trail4 = new LinkedList();
+        
     }
     
     /**
@@ -40,12 +41,22 @@ public class TrailEntrance{
     //    return full;
     //}
     
+    /**
+     * Pass the number of hikers to Group
+     **/
+    public void addHikers(){
+        //need implementation
+    }
+    
     
     /**
      * add groups of hiker to the queue
      **/
     public void addGroupToQ(int trail, Group group){
-         //need more code
+         //get random generated trail number for each group to be add on
+         //while there are group left, check if it's full
+         //if group is full, put it on a trail
+         //if group isn't full, leave the group unassigned
     }
     
     /**
@@ -53,21 +64,17 @@ public class TrailEntrance{
      * 
      * @return int
      **/
-    public int trailNumbGenerator(){
+    public void trailNumbGenerator(){
         randomTrail = new Random();
         trailNum = randomTrail.nextInt(5)+1;
-        return trailNum;
     }
     
     /**
      * Generate a random number of hikers.
-     * 
-     * @return int
      **/
-    public int hikerGenerator(){
+    public void hikerGenerator(){
         randomHikers = new Random();
         hikerNum = randomHikers.nextInt(201)+1;
-        return hikerNum;
     }
     
     /**
