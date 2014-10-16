@@ -84,15 +84,24 @@ public class Group
         }
     }
     
-    // don't really need toString here anymore.
     /**
-     * toString method
+     * toString method, prints all the hiker information in the group.
+     * 
      *
      * @return String
-     *//
-    //@Override
-    //public String toString()
-    //{
-    //    return ;
-    //}
+     **/
+    @Override
+    public String toString()
+    {
+        while(numbHikers > 0){
+            String hikerInfo = group.peek();
+            for(int i = 0; i < numbHikers; i++){
+                
+                group.pop();
+                return "" + hikerInfo;
+                numbHikers--;
+            }
+        }
+        //return "Unable to retrieve Hikers' information";
+    }
 }
