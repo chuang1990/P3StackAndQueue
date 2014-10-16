@@ -6,8 +6,12 @@ import java.util.LinkedList;
 public class TrailEntrance{
 
     //instance variables
-    private LinkedList<Group> queue;
+    private LinkedList<Group> trail1;
+    private LinkedList<Group> trail2;
+    private LinkedList<Group> trail3;
+    private LinkedList<Group> trail4;
     private int trailNum;
+    private int hikerNum;
     
     /**
      * constructor
@@ -22,18 +26,18 @@ public class TrailEntrance{
      *
      * @return boolean
      **/
-    public boolean isGroupFull(){
-        boolean full = false;
-        for(int i = 0; i < queue.size(); i++){
+    //public boolean isGroupFull(){     //not needed
+    //    boolean full = false;
+    //    for(int i = 0; i < queue.size(); i++){
             //need to add more
             }
-        return full;
-    }
+    //    return full;
+    //}
     
     /**
      * add groups of hiker to the queue
      **/
-    addGroupToQ(Group group){
+    publicaddGroupToQ(Group group){
          //need more code
     }
     
