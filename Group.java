@@ -13,10 +13,10 @@ import java.util.Stack;
 public class Group
 {
     
-    private Stack<Hiker> group; //creating the Stack of Hiker
+    private Hiker[] group; //creating the Stack of Hiker
     private Hiker hikerTemp;
     private int numbHikers;
-    private int maxHikers;
+    private int maxHikers = 10;
     
     /**
      * constructor
@@ -24,7 +24,7 @@ public class Group
     public Group(int maxHikers)
     {
         hikerTemp = new Hiker();
-        group = new Stack<Hiker>(); //initializing the Strack 
+        group = new Hiker[maxHikers]; //initializing the Strack 
         this.maxHikers = maxHikers;
         
     }
@@ -59,14 +59,25 @@ public class Group
      **/
     public boolean isGroupFull()
     {
-        boolean full = false;
         
         if(group.size()==maxHikers)
-        {
-            full = true;
-        }
-        return full; 
+            return true;
+        else
+            return false; 
     }
+    
+    /**
+     * check if the group is empty
+     * 
+     * @return boolean
+     **/
+     public boolean isGroupEmpty()
+     {
+         if(group.size() == 0)
+            return true;
+        else
+            return false;
+     }
     
     /**
      * add hiker to the group
