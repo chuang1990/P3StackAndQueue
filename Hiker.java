@@ -4,7 +4,7 @@
  * The Hiker Class is part of the implementation of "Hiker Program"
  * 
  * The Hiker Class is in charge to create a Hiker Object which has a hikerId 
- * This class provide the setters and getters for the HikerId and also the toString methodo 
+ * This class provide the setters and getters for the HikerId and also the toString method 
  * that prints the state of the object
  * 
  **/
