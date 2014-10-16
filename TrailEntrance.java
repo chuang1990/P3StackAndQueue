@@ -37,7 +37,7 @@ public class TrailEntrance{
     /**
      * add groups of hiker to the queue
      **/
-    publicaddGroupToQ(Group group){
+    public void addGroupToQ(Group group){
          //need more code
     }
     
