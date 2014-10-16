@@ -16,7 +16,12 @@ public class Group
     private Stack<Hiker> group; //creating the Stack of Hiker
     private Hiker hikerTemp;
     private int numbHikers;
-    private int maxHikers = 10;
+    private int maxHikers;
+    private String hikerInfo;
+    //get local time for hiker info and timer
+    private Data date;
+    //stores the arrival time of the hiker
+    private String time;
     
     /**
      * constructor
@@ -27,21 +32,45 @@ public class Group
         group = new Stack<Hiker>(); //initializing the Strack 
         
     }
+    /**
+     * defult Constructor
+     **/
+    public Group()
+    {
+        maxHikers = 10;
+        this.Group(maxHikers);
+    }
+    
+    /**
+     * set up the hiker information
+     */
+    public void createHiker(int h){
+        //get the time
+        this.date = new Date();
+        this.time = date.toString();
+        String hiker = "Hiker"+h;
+        hikerInfo= hiker + " "+ time;
+    }
     
     /**
      * put auto-generated hikers into the stack.
      *
      * @param hikers list of string
      **/
-    public void addHikers(String[] hikerInfo)
+    public void addHikers(int n)
     {
-        hikerTemp = new Hiker(hikerInfo);
-        if(numbHikers = maxHikers){
-            throw new FullStackException("Sorry, this stack is full.");
-        }
-        else{
-            group.push(hikerTemp);
-            numbHikers++;
+        //int count = 0;
+        for(int a = 0; a < n; a++){
+            //create a tempurary hiker 
+            hikerTemp = new Hiker(hikerInfo);
+            //check if the grouop is full
+            if(numbHikers = maxHikers){
+                System.out.println("Sorry, this stack is full");
+            }
+            else{
+                group.push(hikerTemp);
+                numbHikers++;
+            }
         }
         
     }
@@ -76,7 +105,7 @@ public class Group
     public Hiker removeHiker()
     {
         if(group.empty() == true)
-            return false;
+            return null;
         else{
             hikerTemp = group.peek();
             group.pop();
@@ -94,12 +123,12 @@ public class Group
     public String toString()
     {
         while(numbHikers > 0){
-            String hikerInfo = group.peek();
+            String hikerInfo = group.peek().toString();
             for(int i = 0; i < numbHikers; i++){
                 
                 group.pop();
-                return "" + hikerInfo;
                 numbHikers--;
+                return "" + hikerInfo;
             }
         }
         //return "Unable to retrieve Hikers' information";
