@@ -62,6 +62,7 @@ public class Group
         //int count = 0;
         for(int a = 0; a < n; a++){
             //create a tempurary hiker 
+            createHiker(a);
             hikerTemp = new Hiker(hikerInfo);
             //check if the grouop is full
             if(numbHikers = maxHikers){
