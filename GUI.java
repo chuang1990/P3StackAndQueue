@@ -86,6 +86,7 @@ public class GUI{
             @Override
             public void actionPerformed(ActionEvent e){
                 //initialize the program
+                //check all queue and stack are clean?
                 trails = new TrailEntrance();
             }
         });
