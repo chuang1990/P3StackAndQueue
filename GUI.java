@@ -87,6 +87,7 @@ public class GUI{
             public void actionPerformed(ActionEvent e){
                 //initialize the program
                 //check all queue and stack are clean?
+                //write all hiker info into file
                 trails = new TrailEntrance();
             }
         });
@@ -95,8 +96,7 @@ public class GUI{
         openBtn.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 //clear the stacks that has more than 10 hikers from the all the queues.
-                //prints out the info from the released stacks
-                //writes to file
+                //prints out the info from the released stacks.
                 //throw exemption if startBtn hasn't been pressed
             }
         });
@@ -107,7 +107,6 @@ public class GUI{
             public void actionPerformed(ActionEvent e){
                 //empty the queues.
                 //print out the info of all the stacks that got cleared
-                //writes to file
                 //throw exemption if startBtn hasn't been pressed
                 
             
