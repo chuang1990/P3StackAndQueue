@@ -7,10 +7,7 @@ import java.util.Random;
 public class TrailEntrance{
 
     //instance variables
-    private LinkedList<Group> trail1;
-    private LinkedList<Group> trail2;
-    private LinkedList<Group> trail3;
-    private LinkedList<Group> trail4;
+    private LinkedList<Group> trail;
     private int trailNum;
     private int hikerNum;
     private Random randomTrail;
@@ -21,10 +18,7 @@ public class TrailEntrance{
      **/
     public TrailEntrance(){
         //initialize queues
-        trail1 = new LinkedList();
-        trail2 = new LinkedList();
-        trail3 = new LinkedList();
-        trail4 = new LinkedList();
+        trail = new LinkedList();
         
     }
     
