@@ -13,7 +13,7 @@ import java.util.Stack;
 public class Group
 {
     
-    private Hiker[] group; //creating the Stack of Hiker
+    private Stack<Hiker> group; //creating the Stack of Hiker
     private Hiker hikerTemp;
     private int numbHikers;
     private int maxHikers = 10;
@@ -23,9 +23,8 @@ public class Group
      **/
     public Group(int maxHikers)
     {
-        hikerTemp = new Hiker();
-        group = new Hiker[maxHikers]; //initializing the Strack 
-        this.maxHikers = maxHikers;
+        numbHikers = 0;
+        group = new Stack<Hiker>(); //initializing the Strack 
         
     }
     
@@ -34,12 +33,17 @@ public class Group
      *
      * @param hikers list of string
      **/
-    public void setHikers(String[] hikers)
+    public void addHikers(String[] hikerInfo)
     {
-        //set the hiker value
-        hikerTemp.setHiker(hikers);
-        //add the hiker to the group
-        group.push(hikerTemp);
+        hikerTemp = new Hiker(hikerInfo);
+        if(numbHikers = maxHikers){
+            throw new FullStackException("Sorry, this stack is full.");
+        }
+        else{
+            group.push(hikerTemp);
+            numbHikers++;
+        }
+        
     }
     
     /**
@@ -60,41 +64,35 @@ public class Group
     public boolean isGroupFull()
     {
         
-        if(group.size()==maxHikers)
-            return true;
-        else
-            return false; 
-    }
-    
-    /**
-     * check if the group is empty
-     * 
-     * @return boolean
-     **/
-     public boolean isGroupEmpty()
-     {
-         if(group.size() == 0)
-            return true;
-        else
+        if(group.empty() == true)
             return false;
-     }
-    
-    /**
-     * add hiker to the group
-     **/
-    public void addHiker(Hiker hiker)
-    {
-       group.push(hiker);
+        else
+            return true; 
     }
     
+    /**
+     * remove hiker from the group
+     **/
+    public Hiker removeHiker()
+    {
+        if(group.empty() == true)
+            return false;
+        else{
+            hikerTemp = group.peek();
+            group.pop();
+            return hikerTemp;
+        }
+    }
+    
+    // don't really need toString here anymore.
     /**
      * toString method
      *
      * @return String
      *//
-    @Override
-    public String toString()
-    {
-        return "";
-    }
+    //@Override
+    //public String toString()
+    //{
+    //    return ;
+    //}
 }
