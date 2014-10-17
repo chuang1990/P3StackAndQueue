@@ -1,99 +1,63 @@
-import java.util.LinkedList;
-import java.util.Random;
-
+import java.util.*;
 /**
  * TrailEntrance class
+ * 
+ * @author (your name) 
+ * @version 1/17/14
  **/
-public class TrailEntrance{
+public class TrailEntrance {
+    // the linked list will be treated as a queue
+    private Queue<Group> trail;
+    // number of groups in the queue
+    private int numberGroups; 
 
-    //instance variables
-    private LinkedList<Group> trail;
-    private int trailNum;
-    private int hikerNum;
-    private Random randomTrail;
-    private Random randomHikers;
-    
     /**
-     * constructor
+     * Constructor of TrailEntrance object. 
      **/
     public TrailEntrance(){
-        //initialize queues
         trail = new LinkedList();
-        
+        numberGroups = 0; 
     }
-    
+
     /**
-     * check if the group is full
-     *
-     * @return boolean
-     **/
-    //public boolean isGroupFull(){     //not needed
-    //    boolean full = false;
-    //    for(int i = 0; i < queue.size(); i++){
-            //need to add more
-            }
-    //    return full;
-    //}
-    
-    /**
-     * Pass the number of hikers to Group
-     **/
-    public void addHikers(){
-        //need implementation
-    }
-    
-    
-    /**
-     * add groups of hiker to the queue
-     **/
-    public void addGroupToQ(int trail, Group group){
-         //get random generated trail number for each group to be add on
-         //while there are group left, check if it's full
-         //if group is full, put it on a trail
-         //if group isn't full, leave the group unassigned
-    }
-    
-    /**
-     * Generate a random trail number for the group to go into
+     * Add a groups of hikers to the queue. 
      * 
-     * @return int
+     * @param  group    the group of hikers to add to the queue
      **/
-    public void trailNumbGenerator(){
-        randomTrail = new Random();
-        trailNum = randomTrail.nextInt(5)+1;
+    public void addGroupToQ(Group group) 
+    {
+        trail.offer(group); 
+        numberGroups++; 
+    }
+
+    /**
+     * Remove and return a group from the queue. 
+     * 
+     * @return    the group to be returned and removed
+     */
+    public Group removeGroup()
+    {
+        numberGroups--;
+        return trail.remove(); 
     }
     
     /**
-     * Generate a random number of hikers.
-     **/
-    public void hikerGenerator(){
-        randomHikers = new Random();
-        hikerNum = randomHikers.nextInt(201)+1;
+     * Returns (but does not remove) first group in queue. 
+     * 
+     * @return    the group to "peek" at 
+     */
+    public Group getFirstGroup()
+    {
+        return trail.peek(); 
     }
     
     /**
-     * set the trail number
-     **/
-    public void setTrailNum(int trail){
-        this.trailNum = trail;
-    }
-    
-    /**
-     * get the trail number
-     *
-     * @return int
-     **/
-    public int getTrailNum(){
-        return trailNum;
-    }
-    
-    /**
-     * get the hikers information in the groups.
-     *
-     * @return String
-     **/
-    public String getTrailInfo(){
-        //need more work
-        return "";
+     * Returns the number of groups in the queue
+     * 
+     * @return    number of groups in the queue
+     */
+    public int getNumberGroups()
+    {
+        return numberGroups; 
     }
 }
