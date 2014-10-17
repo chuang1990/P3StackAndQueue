@@ -1,138 +1,97 @@
+
 import java.util.Stack;
-import java.util.Date;
 /**
  * Class Group
- * 
+ *
  * The Group Class is part of the implementation of "The Hiker Program"
- * 
- * It acts as the Stack data Structure that holds Hiker objects. 
+ *
+ * It acts as the Stack data Structure that holds Hiker objects.
  * There is a maximun number of hikers that it can hold. It has methods to add hikers to the group
  * get the number of hikers in the group and check if the group is full o not.
  * It also has a toString methods that returns the state of the object
- * 
+ *
+ * @author (your name) 
+ * @version 1/17/14
  **/
 public class Group
 {
-    
     private Stack<Hiker> group; //creating the Stack of Hiker
-    private Hiker hikerTemp;
     private int numbHikers;
     private int maxHikers;
-    private String hikerInfo;
-    //get local time for hiker info and timer
-    private Date date;
-    //stores the arrival time of the hiker
-    private String time;
-    
+    // string holds info for all hikers in group
+    private String info; 
+
     /**
-     * constructor
+     * Constructor for Group objects
      **/
     public Group(int maxHikers)
     {
+        this.maxHikers = maxHikers; 
         numbHikers = 0;
-        group = new Stack<Hiker>(); //initializing the Strack 
-        
+        info = ""; 
+        group = new Stack<Hiker>(); //initializing the Stack
     }
+
     /**
-     * defult Constructor
-     **/
-    public Group()
-    {
-        this(maxHikers);
-        maxHikers = 10;
-    }
-    
-    /**
-     * set up the hiker information
-     */
-    public void createHiker(int h){
-        //get the time
-        this.date = new Date();
-        this.time = date.toString();
-        String hiker = "Hiker"+h;
-        hikerInfo= hiker + " "+ time;
-    }
-    
-    /**
-     * put auto-generated hikers into the stack.
-     *
-     * @param hikers list of string
-     **/
-    public void addHikers(int n)
-    {
-        //int count = 0;
-        for(int a = 0; a < n; a++){
-            //create a tempurary hiker 
-            createHiker(a);
-            hikerTemp = new Hiker(hikerInfo);
-            //check if the grouop is full
-            if(numbHikers = maxHikers){
-                System.out.println("Sorry, this stack is full");
-            }
-            else{
-                group.push(hikerTemp);
-                numbHikers++;
-            }
-        }
-        
-    }
-    
-    /**
-     * get the number of hikers in a group
+     * Pushes a hiker onto the stack and increments number of hikers only if group is not full. 
      * 
-     * @return hikers int
+     * @param  hiker    the hiker object you wish to add
+     */
+    public void addHiker(Hiker hiker)
+    {
+        if (!isGroupFull())
+        {
+            numbHikers++; 
+            info += hiker.getHikerId() + " "; 
+            group.push(hiker);
+        }
+    }
+
+    /**
+     * Return the number of hikers in the group. 
+     *
+     * @return    the number of hikers in the group
      */
     public int getGroupNum()
     {
         return numbHikers;
     }
-    
+
     /**
-     * check if the group is full
-     * 
-     * @return boolean
+     * Check if the group is full. 
+     * If number of hikers is equal to maximum number of hikers, group will be full. 
+     *
+     * @return    true if the group is full, false if it is not
      **/
     public boolean isGroupFull()
     {
-        
-        if(group.empty() == true)
-            return false;
-        else
-            return true; 
+        return numbHikers == maxHikers; 
     }
-    
+
     /**
-     * remove hiker from the group
-     **/
+     * Remove and return a hiker from the group.
+     * 
+     * @return     the Hiker object to be removed and returned
+     */
     public Hiker removeHiker()
     {
-        if(group.empty() == true)
-            return null;
-        else{
-            hikerTemp = group.peek();
-            group.pop();
-            return hikerTemp;
+        // if group is not empty, remove and return top element
+        if (!group.empty())
+        {
+            return group.pop(); 
         }
+
+        // else return null
+        return null; 
     }
     
     /**
-     * toString method, prints all the hiker information in the group.
+     * Returns info of all hikers in the group.
      * 
-     *
-     * @return String
-     **/
-    @Override
+     * @return    the string representation of all hikers in a group 
+     */
     public String toString()
     {
-        while(numbHikers > 0){
-            String hikerInfo = group.peek().toString();
-            for(int i = 0; i < numbHikers; i++){
-                
-                group.pop();
-                numbHikers--;
-                return "" + hikerInfo;
-            }
-        }
-        return "Unable to retrieve Hikers' information";
+        return info; 
     }
 }
