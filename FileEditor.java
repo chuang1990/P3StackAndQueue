@@ -1,5 +1,6 @@
 
 import java.util.Scanner;
+import java.io.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
@@ -17,6 +18,7 @@ public final class FileEditor {
     private Scanner scanText;
     private FileReader readText;
     private final ArrayList<String> text;
+    private Writer writer;
 
     public FileEditor(File file) {
         text = new ArrayList<>();
@@ -52,5 +54,22 @@ public final class FileEditor {
      */
     public void fileWriter() {
         //need add more
+         try{
+            //store the time that the file is created into a string
+            time = new Date();
+            timeStamp = time.toString();
+            //create new file
+            //file = new File("Hiker"+timeStamp+".txt");
+            //creates a writer that uses buffered Writer to writer to the newly created file.
+            //timeStamp prevent files to overwrite each other.
+            writer = new BufferedWriter(new OutputStreamWriter(
+                new FileOutputStream("Hiker"+timeStamp+".txt"), "utf-8"));
+                //create a loop that takes in all the created hikers and write them in.
+                writer.write("Something");
+            } catch (IOException ex) {
+                // report
+            } finally {
+                try {writer.close();} catch (Exception ex) {}
+            }
     }
 }
