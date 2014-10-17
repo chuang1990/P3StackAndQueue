@@ -1,4 +1,5 @@
 import java.util.Stack;
+import java.util.Date;
 /**
  * Class Group
  * 
@@ -19,7 +20,7 @@ public class Group
     private int maxHikers;
     private String hikerInfo;
     //get local time for hiker info and timer
-    private Data date;
+    private Date date;
     //stores the arrival time of the hiker
     private String time;
     
@@ -37,8 +38,8 @@ public class Group
      **/
     public Group()
     {
+        this(maxHikers);
         maxHikers = 10;
-        this.Group(maxHikers);
     }
     
     /**
@@ -132,6 +133,6 @@ public class Group
                 return "" + hikerInfo;
             }
         }
-        //return "Unable to retrieve Hikers' information";
+        return "Unable to retrieve Hikers' information";
     }
 }
