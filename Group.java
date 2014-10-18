@@ -42,7 +42,7 @@ public class Group
         if (!isGroupFull())
         {
             numbHikers++; 
-            info += hiker.getHikerId() + " "; 
+            info += hiker.getHikerId() + " \n"; 
             group.push(hiker);
         }
     }
@@ -92,6 +92,6 @@ public class Group
      */
     public String toString()
     {
-        return info; 
+        return info + "\n"; 
     }
 }
