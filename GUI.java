@@ -132,7 +132,7 @@ public class GUI{
         //create a scroller for the textArea
         JScrollPane textScroller = new JScrollPane(textArea);
         //set scroller to always be vertical
-        textScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);;
+        textScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         
         textPanel.add(textScroller);
     }
