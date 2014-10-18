@@ -1,6 +1,7 @@
 
 import java.util.Scanner;
 import java.io.*;
+import java.util.Date;
 
 /**
  * FileEditor class
@@ -16,7 +17,7 @@ public final class FileEditor {
     private Scanner scanText;
     private FileReader readText;
     private Date time;
-    private Writer writer;
+    private Writer writer = null;
 
     public FileEditor(String s){
         fileWriter(s);
