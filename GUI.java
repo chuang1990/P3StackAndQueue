@@ -5,18 +5,14 @@ import java.awt.event.ActionListener;
 
 //Swing
 import javax.swing.*;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.border.EtchedBorder;
-
-//experiment
-//JavaFX
-//import javafx.scene.text.Text;
 
 
 /**
  * GUI class
+ * 
+ * @Catherine Huang
+ * @version 10/18/2014
  **/
 public class GUI{
 
@@ -25,22 +21,20 @@ public class GUI{
     private JPanel mainPanel;
     //buttons
     private JPanel btnPanel;
-    private JButton startBtn;
-    private JButton checkBtn;
-    private JButton openBtn;
     //text area
     private JPanel textPanel;
     private JTextArea textArea;
-    private JScrollPane textScroller;
+    
+    //labelPnael
+    private JPanel hintPanel;
     //other variables
-    private static TrailEntrance trails;
     private FileEditor fileEditor;
+    private ParkManager manager;
     
     /**
      * constructor
      **/
     public GUI(){
-        trails = new TrailEntrance();
         this.makeWindow();
     }
     
@@ -69,35 +63,44 @@ public class GUI{
         makeLabels();
         
         contentPane.add(btnPanel, BorderLayout.SOUTH);
+        contentPane.add(hintPanel, BorderLayout.CENTER);
         contentPane.add(textPanel, BorderLayout.NORTH);
     }
     
     /**
-     * create the buttons
+     * Create the buttons
+     * 
+     * Start button is responsible for generating hikers, put them into groups,
+     * then line them up at the entrance of each trials
+     * 
+     * Open button is responsible for letting the groups that are full with 10
+     * hikers into the Mountain
+     * 
+     * Check button is responsible for letting in the groups that are not full, but the
+     * part has reach it's capacity to allow more users to enter.
      **/
     public void makeButton(){
         btnPanel = new JPanel(new GridLayout(1,3));
         
-        //JLabel label = new JLabel("Purple Mountain Trail");
-        //label.setFont(new Font("Serif", Font.BOLD+ITALIC, 20));
-        
+        //create buttons
         startBtn = new JButton("Start");
         startBtn.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
                 //initialize the program
-                //check all queue and stack are clean?
-                //write all hiker info into file
-                trails = new TrailEntrance();
+                textArea.setText("");
+                manager = new ParkManager(4, 888, 10);
+                manager.createHikersInTrails();
+                fileEditor = new FileEditor(manager.hikersInfo());
+                textArea.setText(manager.fullGroupInfo()+manager.partialGroupInfo());
+                
             }
         });
         
         openBtn = new JButton("Open");
         openBtn.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                //clear the stacks that has more than 10 hikers from the all the queues.
-                //prints out the info from the released stacks.
-                //throw exemption if startBtn hasn't been pressed
+                textArea.setText(manager.removeFullGroups());
             }
         });
         
@@ -105,11 +108,7 @@ public class GUI{
         checkBtn.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                //empty the queues.
-                //print out the info of all the stacks that got cleared
-                //throw exemption if startBtn hasn't been pressed
-                
-            
+                textArea.setText(manager.removePartialGroups());
             }
         });
         
@@ -131,7 +130,7 @@ public class GUI{
         textArea.setEditable(false);
         
         //create a scroller for the textArea
-        textScroller = new JScrollPane(textArea);
+        JScrollPane textScroller = new JScrollPane(textArea);
         //set scroller to always be vertical
         textScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);;
         
@@ -142,13 +141,17 @@ public class GUI{
      * create the labels
      **/
     public void makeLabels(){
+        hintPanel = new JPanel(new BorderLayout());
         
+        JLabel startLabel = new JLabel("Press Start to allow Hikers to line up in the entrances");
+        
+        JLabel openLabel = new JLabel("Press Open to let the full group of hikers into the trails");
+        
+        JLabel checkLabel = new JLabel("Press check to let the hikers who are in partial group into the trials");
+        
+        hintPanel.add(startLabel, BorderLayout.NORTH);
+        hintPanel.add(openLabel, BorderLayout.CENTER);
+        hintPanel.add(checkLabel, BorderLayout.SOUTH);
     }
     
-    /**
-     * clear the text box
-     **/
-    public void clearTextArea(){
-    
-    }
 }
