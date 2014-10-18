@@ -23,9 +23,9 @@ public class ParkManager
     private int state;
     
     //stores the string of hiker's info tempurarily
-    private String hikerInfo;
-    private String fullGroupInfo;
-    private String partialGroupInfo;
+    private String hikerInfo = "";
+    private String fullGroupInfo = "";
+    private String partialGroupInfo = "";
 
     /**
      * Constructor for objects of class ParkManager
