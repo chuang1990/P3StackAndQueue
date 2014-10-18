@@ -15,6 +15,7 @@ public final class FileEditor {
     private File file;
     private Scanner scanText;
     private FileReader readText;
+    private Date time;
     private Writer writer;
 
     public FileEditor(String s){
