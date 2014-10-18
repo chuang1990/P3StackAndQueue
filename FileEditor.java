@@ -4,7 +4,9 @@ import java.io.*;
 
 /**
  * FileEditor class
- *
+ * 
+ * @Catherine
+ * @version 10/18/2014
  */
 public final class FileEditor {
 
