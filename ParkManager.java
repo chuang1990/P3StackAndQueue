@@ -21,6 +21,11 @@ public class ParkManager
     
     // enforces sequence of method calls
     private int state;
+    
+    //stores the string of hiker's info tempurarily
+    private String hikerInfo;
+    private String fullGroupInfo;
+    private String partialGroupInfo;
 
     /**
      * Constructor for objects of class ParkManager
@@ -59,7 +64,7 @@ public class ParkManager
         Random random = new Random(); 
         // need plus 1 to make sure nextInt argument is positive
         int hikersToAdd = random.nextInt(hikersAllowed + 1);
-        System.out.println(hikersToAdd);
+        //System.out.println(hikersToAdd);
 
         // create a new group because there will always be at least 1 group
         Group currentGroup = new Group(groupSize);
@@ -75,15 +80,22 @@ public class ParkManager
             currentGroup.addHiker(hikerNew);
             // System.out.println(currentGroup.isGroupFull());
             // write hiker's info to file here-- represented with system.out.println here
-            System.out.println(hikerNew.getHikerId());
+            //System.out.println(hikerNew.getHikerId());
+            //store each new hiker into a string
+            for(int h = hikersToAdd; h == hikersToAdd; h--){
+                hikerInfo += hikerNew.getHikerId() + "\n";
+                hikersInfo();
+            }
 
             // if the group is full 
             if (currentGroup.isGroupFull())
             {
                 // add group to queue at current entrance number
                 entrances[entranceNum].addGroupToQ(currentGroup);
-                System.out.println("group added to stack");
-                System.out.println("This stack will go to: " + entranceNum);
+                fullGroupInfo += "10 Hikers join a group \n This group will go to: " + entranceNum + "\n";
+                
+                //System.out.println("group added to stack");
+                //System.out.println("This stack will go to: " + entranceNum);
 
                 // increment index and once reaches last trail wrap around to beginning again
                 entranceNum++;
@@ -100,8 +112,11 @@ public class ParkManager
         {
             // increment index and once reaches last trail wrap around to beginning again
             entrances[entranceNum].addGroupToQ(currentGroup);
-            System.out.println("group added to stack");
-            System.out.println("This stack will go to: " + entranceNum);
+            partialGroupInfo = currentGroup.getGroupNum() 
+                                + " Hikers join in a group\n maxium capacity had reached.\n This group will go to: " 
+                                + entranceNum + "\n";
+            //System.out.println("group added to stack");
+            //System.out.println("This stack will go to: " + entranceNum);
         }
         
         state++; 
@@ -149,11 +164,11 @@ public class ParkManager
         }
 
         // to take out-- for testing
-        System.out.println(hikerInfo);
+        //System.out.println(hikerInfo);
         
         state++; 
         
-        return hikerInfo; 
+        return hikerInfo+"\n"; 
     }
 
     /**
@@ -195,6 +210,33 @@ public class ParkManager
         // resets
         state = 1; 
         
-        return hikerInfo; 
+        return hikerInfo+"\n"; 
+    }
+    /**
+     * Returns String of all the hikers that has been created
+     * 
+     * @return      all the hikers created.
+     */
+    public String hikersInfo(){
+        
+        return hikerInfo;
+    }
+    
+    /**
+     * Returns String of all the full groups that're add to the a queue.
+     * 
+     * @return    info of all hikers in group
+     */
+    public String fullGroupInfo(){
+        return fullGroupInfo;
+    }
+    
+    /**
+     * Returns String of all the partial group that is add to the queue.
+     * 
+     * @return    info of all hikers in group
+     */
+    public String partialGroupInfo(){
+        return partialGroupInfo;
     }
 }
