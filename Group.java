@@ -3,24 +3,24 @@ import java.util.Stack;
 /**
  * Class Group
  *
- * The Group Class is part of the implementation of "The Hiker Program"
- *
  * It acts as the Stack data Structure that holds Hiker objects.
  * There is a maximun number of hikers that it can hold. It has methods to add hikers to the group
  * get the number of hikers in the group and check if the group is full o not.
  * It also has a toString methods that returns the state of the object
  *
- * @author (your name) 
+ * @author  (Catherine Huang, Hannah Riggs, Maria del Mar Moncaleano) 
  * @version 1/17/14
  **/
 public class Group
 {
-    private Stack<Hiker> group; //creating the Stack of Hiker
+    //creating the Stack of Hiker
+    private Stack<Hiker> group; 
+    //number of hikers
     private int numbHikers;
+    //maximun number of haikers allow in each group
     private int maxHikers;
     // string holds info for all hikers in group
     private String info; 
-
     /**
      * Constructor for Group objects
      **/
@@ -29,7 +29,7 @@ public class Group
         this.maxHikers = maxHikers; 
         numbHikers = 0;
         info = ""; 
-        group = new Stack<Hiker>(); //initializing the Stack
+        group = new Stack<Hiker>(); 
     }
 
     /**
@@ -80,11 +80,10 @@ public class Group
         {
             return group.pop(); 
         }
-
         // else return null
         return null; 
     }
-    
+
     /**
      * Returns info of all hikers in the group.
      * 
