@@ -1,23 +1,21 @@
 /**
- * Hiker class
- *
- * The Hiker Class is part of the implementation of "Hiker Program"
+ * The Hiker Class 
  *
  * The Hiker Class is in charge to create a Hiker Object which has a hikerId
  * This class provide the setters and getters for the HikerId and also the toString method
  * that prints the state of the object
  * 
- * @author (your name) 
- * @version 1/17/14
+ * @author (Catherine Huang, Hannah Riggs, Maria del Mar Moncaleano) 
+ * @version 10/18/2014
  **/
 public class Hiker
 {
     // id of hiker as String (HikerNum) 
     private String hikerId;
-    
+
     // id number that is incremented for each hiker
     private static int idNum = 0; 
-    
+
     /**
      * Constructor for Hiker using class variable idNum that increments with each new Hiker created. 
      */
