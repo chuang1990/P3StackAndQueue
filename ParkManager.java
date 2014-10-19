@@ -1,9 +1,11 @@
 import java.util.Random;
 /**
- * Write a description of class ParkManager here.
+ * Class ParkManager
  * 
- * @author (your name) 
- * @version 1/17/14
+ * Creates the Hikers and adds them to the groups, when they are in the groups they get add to the queue
+ * 
+ * @author (Catherine Huang, Hannah Riggs, Maria del Mar Moncaleano) 
+ * @version 10/18/2014
  */
 public class ParkManager
 {
@@ -82,7 +84,8 @@ public class ParkManager
             // write hiker's info to file here-- represented with system.out.println here
             //System.out.println(hikerNew.getHikerId());
             //store each new hiker into a string
-            for(int h = hikersToAdd; h == hikersToAdd; h--){
+            for(int h = hikersToAdd; h == hikersToAdd; h--)
+            {
                 hikerInfo += hikerNew.getHikerId() + "\n";
                 hikersInfo();
             }
@@ -92,7 +95,7 @@ public class ParkManager
             {
                 // add group to queue at current entrance number
                 entrances[entranceNum].addGroupToQ(currentGroup);
-                fullGroupInfo += "10 Hikers join a group \n This group will go to: " + entranceNum + "\n";
+                fullGroupInfo += "\n"+ "Group is Full (10 Hikers on it) \n This group will go to: " + entranceNum + "\n";
                 
                 //System.out.println("group added to stack");
                 //System.out.println("This stack will go to: " + entranceNum);
@@ -102,7 +105,6 @@ public class ParkManager
                 entranceNum %= trailsNumber; 
                 currentGroup = new Group(10); 
             }
-
             // one hiker added, so remove from number to add
             hikersToAdd--; 
         }
@@ -112,13 +114,11 @@ public class ParkManager
         {
             // increment index and once reaches last trail wrap around to beginning again
             entrances[entranceNum].addGroupToQ(currentGroup);
-            partialGroupInfo = currentGroup.getGroupNum() 
-                                + " Hikers join in a group\n maxium capacity had reached.\n This group will go to: " 
-                                + entranceNum + "\n";
+            partialGroupInfo =  "\n"+ currentGroup.getGroupNum() 
+                              +" Hikers join in a group"+ "\n" + "This group will go :" + entranceNum + "\n"+"\n maxium capacity had reached.\n ";
             //System.out.println("group added to stack");
             //System.out.println("This stack will go to: " + entranceNum);
-        }
-        
+        }  
         state++; 
     }
 
@@ -133,16 +133,15 @@ public class ParkManager
         if (state != 2)
         {
             return ""; 
-        }
-        
-        String hikerInfo = "Trails with Full Groups:\n"; 
+        } 
+        String hikerInfo = "TRAILS WITH FULL GROUPS:\n\n"; 
 
         Group currentGroup; 
 
         // iterate over every trail entrance
         for (int i = 0; i < trailsNumber; i++)
         {
-            hikerInfo += "Trail " + i + ":\n";
+            hikerInfo += "\n"+">TRAIL " + i + ":\n";
 
             // iterate over every group at an entrance
             while (entrances[i].getNumberGroups() > 0) 
@@ -164,8 +163,7 @@ public class ParkManager
         }
 
         // to take out-- for testing
-        //System.out.println(hikerInfo);
-        
+        //System.out.println(hikerInfo);  
         state++; 
         
         return hikerInfo+"\n"; 
@@ -184,15 +182,13 @@ public class ParkManager
         {
             return "";
         }
-        
-        String hikerInfo = "Trails with Partial Groups:\n"; 
-
+        String hikerInfo ="TRAILS WITH PARTIAL GROUPS:\n"; 
         Group currentGroup; 
 
         // iterate over every trail entrance
         for (int i = 0; i < trailsNumber; i++)
         {
-            hikerInfo += "Trail " + i + ":\n";
+            hikerInfo += "\n"+">Trail " + i + ":\n";
 
             // iterate over every group at an entrance
             while (entrances[i].getNumberGroups() > 0) 
@@ -212,13 +208,14 @@ public class ParkManager
         
         return hikerInfo+"\n"; 
     }
+    
     /**
      * Returns String of all the hikers that has been created
      * 
      * @return      all the hikers created.
      */
-    public String hikersInfo(){
-        
+    public String hikersInfo()
+    { 
         return hikerInfo;
     }
     
@@ -227,7 +224,8 @@ public class ParkManager
      * 
      * @return    info of all hikers in group
      */
-    public String fullGroupInfo(){
+    public String fullGroupInfo()
+    {
         return fullGroupInfo;
     }
     
@@ -236,7 +234,8 @@ public class ParkManager
      * 
      * @return    info of all hikers in group
      */
-    public String partialGroupInfo(){
+    public String partialGroupInfo()
+    {
         return partialGroupInfo;
     }
 }
