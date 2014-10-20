@@ -2,8 +2,9 @@ import java.util.Random;
 /**
  * Class ParkManager
  * 
- * Creates the Hikers and adds them to the groups, when they are in the groups they get add to the queue
- * 
+ * Creates a random number of Hikers and adds them to the groups, when they are in the groups they get add to the queue.
+ * Groups that are not full are added last. It also returns strings with information about the hikers and trails.
+ *
  * @author (Catherine Huang, Hannah Riggs, Maria del Mar Moncaleano) 
  * @version 10/18/2014
  */
@@ -11,19 +12,19 @@ public class ParkManager
 {
     // array of entrances, so that we may access each entrance with index
     private TrailEntrance[] entrances;
-    
+
     // number of trails in the park
     private int trailsNumber; 
-    
+
     // maximum number of hikers allowed in one day
     private int hikersAllowed; 
-    
+
     // the maximum number of hikers that can be in a group
     private int groupSize;
-    
+
     // enforces sequence of method calls
     private int state;
-    
+
     //stores the string of hiker's info tempurarily
     private String hikerInfo = "";
     private String fullGroupInfo = "";
@@ -37,7 +38,7 @@ public class ParkManager
         this.trailsNumber = trailsNumber; 
         this.hikersAllowed = hikersAllowed; 
         this.groupSize = groupSize;
-        
+
         // can only call createHikersInTrails() method first
         state = 1; 
 
@@ -61,12 +62,11 @@ public class ParkManager
         {
             return; 
         }
-        
+
         // generate a random number. 
         Random random = new Random(); 
         // need plus 1 to make sure nextInt argument is positive
         int hikersToAdd = random.nextInt(hikersAllowed + 1);
-        //System.out.println(hikersToAdd);
 
         // create a new group because there will always be at least 1 group
         Group currentGroup = new Group(groupSize);
@@ -80,9 +80,7 @@ public class ParkManager
             Hiker hikerNew = new Hiker();
 
             currentGroup.addHiker(hikerNew);
-            // System.out.println(currentGroup.isGroupFull());
-            // write hiker's info to file here-- represented with system.out.println here
-            //System.out.println(hikerNew.getHikerId());
+
             //store each new hiker into a string
             for(int h = hikersToAdd; h == hikersToAdd; h--)
             {
@@ -96,9 +94,6 @@ public class ParkManager
                 // add group to queue at current entrance number
                 entrances[entranceNum].addGroupToQ(currentGroup);
                 fullGroupInfo += "\n"+ "Group is Full (10 Hikers on it) \n This group will go to: " + entranceNum + "\n";
-                
-                //System.out.println("group added to stack");
-                //System.out.println("This stack will go to: " + entranceNum);
 
                 // increment index and once reaches last trail wrap around to beginning again
                 entranceNum++;
@@ -115,10 +110,8 @@ public class ParkManager
             // increment index and once reaches last trail wrap around to beginning again
             entrances[entranceNum].addGroupToQ(currentGroup);
             partialGroupInfo =  "\n"+ currentGroup.getGroupNum() 
-                              +" Hikers join in a group"+ "\n" + "This group will go :" + entranceNum + "\n"+"\n maxium capacity had reached.\n ";
-            //System.out.println("group added to stack");
-            //System.out.println("This stack will go to: " + entranceNum);
-        }  
+            +" Hikers join in a group"+ "\n" + "This group will go :" + entranceNum + "\n"+"\n maxium capacity had reached.\n ";
+        }
         state++; 
     }
 
@@ -161,11 +154,8 @@ public class ParkManager
             }
             hikerInfo += "\n";
         }
-
-        // to take out-- for testing
-        //System.out.println(hikerInfo);  
         state++; 
-        
+
         return hikerInfo+"\n"; 
     }
 
@@ -199,16 +189,12 @@ public class ParkManager
             }
             hikerInfo += "\n";
         }
-
-        // to take out-- for testing
-        System.out.println(hikerInfo);
-        
         // resets
         state = 1; 
-        
+
         return hikerInfo+"\n"; 
     }
-    
+
     /**
      * Returns String of all the hikers that has been created
      * 
@@ -218,7 +204,7 @@ public class ParkManager
     { 
         return hikerInfo;
     }
-    
+
     /**
      * Returns String of all the full groups that're add to the a queue.
      * 
@@ -228,7 +214,7 @@ public class ParkManager
     {
         return fullGroupInfo;
     }
-    
+
     /**
      * Returns String of all the partial group that is add to the queue.
      * 
